@@ -1,0 +1,10 @@
+<ion-view view-title="Global chats">
+  <ion-content>
+      <ion-item class="card" ng-repeat="global_room in globalRooms.data">
+		<div class="item item-text-wrap text-center" ng-click="enterRoom(global_room)">
+			<strong>{{global_room.name}}</strong>
+		</div>
+      </ion-item>
+  </ion-content>
+</ion-view>
+
