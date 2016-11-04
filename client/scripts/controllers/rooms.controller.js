@@ -7,7 +7,7 @@ constructor() {
    
     this.helpers({
       data() {
-        return globalRooms.find();
+        return globalRooms.findOne();
       }
     });
   }
