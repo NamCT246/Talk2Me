@@ -8,7 +8,7 @@ constructor() {
     this.helpers({
       data() {
         return globalRooms.findOne();
-        //just for test
+        //just for fun
       }
     });
   }
