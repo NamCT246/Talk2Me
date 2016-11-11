@@ -1,0 +1,22 @@
+<ion-view title="Login">
+  <ion-content class="has-header padding" cache-view="false">
+    <div class="list">
+      <label class="item item-input">
+        <span class="input-label">Username</span>
+        <input type="text" ng-model="logger.user.name" id="username">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Password</span>
+        <input type="password" ng-model="logger.user.password" id="password">
+      </label>
+    </div>
+
+    <button class="button button-block button-calm" ng-click="logger.login()">
+        <b>Sign in</b>
+    </button>
+
+    <button class="button button-outline button-block button-clear button-calm" ng-click="logger.signup()">
+        Sign up
+    </button>
+  </ion-content>
+</ion-view>

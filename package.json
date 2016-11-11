@@ -1,16 +1,17 @@
 {
-  "name": "Project_studies_2",
+  "name": "Project2",
   "private": true,
   "scripts": {
     "start": "meteor run"
   },
   "dependencies": {
-    "angular": "^1.5.0",
-    "angular-animate": "^1.4.3",
+    "angular": "^1.5.8",
+    "angular-animate": "^1.5.8",
     "angular-ecmascript": "0.0.3",
     "angular-meteor": "^1.3.11",
-    "angular-sanitize": "^1.4.3",
-    "angular-ui-router": "^0.2.13",
+    "angular-moment": "^1.0.0",
+    "angular-sanitize": "^1.5.8",
+    "angular-ui-router": "^0.3.1",
     "ionic-scripts": "^1.3.5",
     "meteor-node-stubs": "~0.2.0",
     "moment": "^2.15.2"

@@ -1,0 +1,25 @@
+<ion-view view-title="Rooms">
+ <ion-nav-buttons side="right">
+    <button ng-click="subrooms.createNewSubRoom()" class="button button-clear button-positive button-icon ion-ios-compose-outline"></button>
+</ion-nav-buttons>
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="room in rooms.data | orderBy:'-lastMessage.timestamp'"
+                class="item-chat item-remove-animate item-avatar item-icon-right"
+                type="item-text-wrap"
+                href="#/tab/rooms/{{ room._id }}">
+        <img ng-src="{{ room.picture }}">
+        <h2>{{ room.name }}</h2>
+          <ng-switch on="room.lastMessage.type">
+          <p ng-switch-when="text">{{ room.lastMessage.text }}</p>
+          <p ng-switch-when="picture">image</p>
+        </ng-switch>
+        <span class="last-message-timestamp">{{ room.lastMessage.timestamp | calendar }}</span>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+        <ion-option-button class="button-assertive" ng-click="rooms.remove(room)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

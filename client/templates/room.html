@@ -1,0 +1,41 @@
+<ion-view title="{{room.data.name}}">
+  <ion-nav-buttons side="right">
+    <button class="button button-clear"><img class="header-picture" ng-src="{{ room.data.picture }}"></button>
+  </ion-nav-buttons>
+  <ion-content class="chat" delegate-handle="chatScroll">
+    <div class="message-list">
+      <div ng-repeat="message in room.messages" class="message-wrapper">
+        <div class="message" ng-class="message.userId === $root.currentUser._id ? 'message-mine' : 'message-other'">
+        <!-- image or text will be sent there -->
+          <span class=""><b>{{ message.userName}}</b></span>
+          <ng-switch on="message.type">
+            <div ng-switch-when="text" class="text">{{ message.text }}</div>
+            <div ng-switch-when="picture" class="picture">
+              <img ng-src="{{ message.picture }}">
+            </div>
+          </ng-switch>
+          <span class="message-timestamp">{{ message.timestamp | amDateFormat: 'HH:mm' }}</span>
+
+
+        </div>
+      </div>
+    </div>
+  </ion-content>
+  <ion-footer-bar keyboard-attach class="bar-stable footer-chat item-input-inset">
+    <label class="item-input-wrapper" >
+      <input ng-model="room.message"
+             dir="auto"
+             type="text"
+             on-return="room.sendMessage(); room.closeKeyboard()"
+             on-focus="room.inputUp()"
+             on-blur="room.inputDown()"/>
+    </label>
+
+    <span ng-if="room.message.length > 0">
+      <button ng-click="room.sendMessage()" class="button button-clear button-positive">Send</button>
+    </span>
+    <span ng-if="!room.message || room.message.length === 0">
+    <button ng-click="room.sendPicture()" class="button button-clear button-icon button-positive icon ion-ios-camera-outline"></button>
+    </span>
+  </ion-footer-bar>
+</ion-view>

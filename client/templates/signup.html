@@ -1,0 +1,17 @@
+<ion-view title="Sign up">
+  <ion-content class="has-header padding">
+    <div class="list">
+      <label class="item item-input">
+        <span class="input-label">Username</span>
+        <input type="text" ng-model="newuser.name" id="newUserName">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Password</span>
+        <input type="password" ng-model="newuser.password" id="newUserPassword">
+      </label>
+    </div>
+  <button class="button button-block button-calm" ng-click="signUp.signup()">
+      <b>Sign up</b>
+  </button>
+  </ion-content>
+</ion-view>

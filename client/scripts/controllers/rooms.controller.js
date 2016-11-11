@@ -1,17 +1,21 @@
+import Moment from 'moment';
 import { Controller } from 'angular-ecmascript/module-helpers';
-import { globalRooms } from '../../../lib/collections';
+import { Rooms } from '../../../lib/collections';
 
-export default class GlobalRoomsCtrl extends Controller {
-constructor() {
+export default class RoomsCtrl extends Controller {
+  constructor() {
     super(...arguments);
-   
+
     this.helpers({
       data() {
-        return globalRooms.find();
+        return Rooms.find();
       }
     });
   }
+
+  remove(room) {
+    Rooms.remove(room._id);
+  }
 }
 
-GlobalRoomsCtrl.$name = 'GlobalRoomsCtrl';
-
+RoomsCtrl.$name = 'RoomsCtrl';

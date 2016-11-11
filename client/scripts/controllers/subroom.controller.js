@@ -2,28 +2,23 @@ import Ionic from 'ionic-scripts';
 import { _ } from 'meteor/underscore';
 import { Meteor } from 'meteor/meteor';
 import { Controller } from 'angular-ecmascript/module-helpers';
-import { Rooms, Messages } from '../../../lib/collections';
+import { SubRooms, Messages } from '../../../lib/collections';
 
-export default class RoomCtrl extends Controller {
+export default class SubRoomCtrl extends Controller {
   constructor() {
     super(...arguments);
 
-    this.roomId = this.$stateParams.roomId;
+    this.subRoomId = this.$stateParams.subRoomId;
     this.userId = Meteor.userId();
     this.isIOS = Ionic.Platform.isWebView() && Ionic.Platform.isIOS();
     this.isCordova = Meteor.isCordova;
 
-
     this.helpers({
       messages() {
-        return Messages.find({ roomId: this.roomId });
-
+        return Messages.find({ subRoomId: this.subRoomId });
       },
       data() {
-        return Rooms.findOne(this.roomId);
-      },
-      getUser(){
-        return Meteor.userId();
+        return SubRooms.findOne(this.subRoomId);
       }
     });
   }
@@ -34,7 +29,7 @@ export default class RoomCtrl extends Controller {
       this.callMethod('newMessage', {
         picture: data,
         type: 'picture',
-        roomId: this.roomId
+        subRoomId: this.subRoomId
       });
     });
   }
@@ -48,15 +43,13 @@ export default class RoomCtrl extends Controller {
       okType: 'button-positive button-clear'
     });
   }
-  
   sendMessage() {
     if (_.isEmpty(this.message)) return;
 
     this.callMethod('newMessage', {
       text: this.message,
       type: 'text',
-      roomId: this.roomId
-
+      subRoomId: this.subRoomId
     });
 
     delete this.message;
@@ -91,5 +84,5 @@ export default class RoomCtrl extends Controller {
   }
 }
 
-RoomCtrl.$name = 'RoomCtrl';
-RoomCtrl.$inject = ['$stateParams', '$timeout', '$ionicScrollDelegate', '$ionicPopup', '$log'];
+SubRoomCtrl.$name = 'SubRoomCtrl';
+SubRoomCtrl.$inject = ['$stateParams', '$timeout', '$ionicScrollDelegate', '$ionicPopup', '$log'];
